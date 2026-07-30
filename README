@@ -1,0 +1,23 @@
+######################################################
+MARKOVITSIS FILIPPOS
+MARKOVITSISFILIPPOS@GMAIL.COM
+
+HERMES TEAM - EMBEDDED SYSTEMS
+UNIVERSITY OF THESSALY
+######################################################
+
+OpenSimParser:
+    - Scripts able to transform the files containing data collected from imus to OpenSim compatible files
+    - Sample imu data are included
+
+Reading1IMU:
+    - MCU code for a single imu per MCU
+    - Python script for saving imu data in .txt files
+    - IMU visualization using processing
+
+Reading2IMU:
+    - MCU code for two imus per MCU
+    - Python script for saving imu data in .txt files
+    - Double IMU visualization using processing
+
+*** rp_pico_read_data.py in Reading1IMU and Reading2IMU are the same script

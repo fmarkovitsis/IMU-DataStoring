@@ -1,0 +1,24 @@
+######################################################
+MARKOVITSIS FILIPPOS
+MARKOVITSISFILIPPOS@GMAIL.COM
+
+HERMES TEAM - EMBEDDED SYSTEMS
+UNIVERSITY OF THESSALY
+######################################################
+
+
+vis:
+    - Processing sketch for imu visualization
+
+PicoProcCode:
+    - Platform.io project. Upload the project as it is using platform.io to an RP pico for reading imu data and writing it in serial. Can be paired with the aforementioned processing sketch for visualizing the data
+
+PicoRaspCode:
+    - Platform.io project. Upload the project as it is using platform.io to an RP pico and execute rp_pico_read_data.py in order to save the imu readings. This code expects several prompts by the given python script before allowing the imus to collect data. Can be used with processing only after those prompts are given.
+
+rp_pico_read_data.py:
+    - Python script for saving imu data in txt files. Auto detects available serial devices. Provides the option to skip calibration, but only if there are .json files containing calibration biases
+    - No inputs
+    - Outputs:
+        - One .json file per serial device, containing calibration biases
+        - One .txt file containing imu rotation data (in quaternions) 

@@ -1,0 +1,47 @@
+######################################################
+MARKOVITSIS FILIPPOS
+MARKOVITSISFILIPPOS@GMAIL.COM
+
+HERMES TEAM - EMBEDDED SYSTEMS
+UNIVERSITY OF THESSALY
+######################################################
+
+data:
+	- Sample IMU data:
+		- COM5.txt: 	pelvis imu
+		- COM18.txt: 	right femur imu
+		- COM9.txt:		shank and foot imus
+
+alignTime.py:
+	- Using the starting time information and the recorded timestamps saved in the imu files, aligns the time across all imu files. If data from at least one imu was not recorded for a specific moment, data from all the other imus for that specific moment is discarded
+	- Input: IMU file paths (modify the code wherever needed) 	
+	- Output: aligned imu files
+
+OpenSimParser.py:
+	- Combines all provided imu files into one, OpenSim compatible file
+	- The current version of the code includes data for 4 imus:
+		pelvis_imu		femur_r_imu		tibia_r_imu		calcn_r_imu
+	  
+	  If more or less imus are used, modify line 5 of OpenSimParser.py
+	- Input: IMU file paths (modify the code wherever needed)
+	- Output: OpenSim compatible file describing the recorded movement
+
+How to use:
+	- Modify alignTime.py to include desired imu files
+	- Run alignTime (# python3 alignTime.py)
+	- Modify  OpenSimParser.py to include the alignecd imu files
+	- Modify OpenSimParser.py line 5 to include the name of the imus, the movement of which the aligned files that you provided describe. Available names (named based on the body part they correspond to): 
+		pelvis_imu
+		femur_r_imu and femur_l_imu
+		tibia_r_imu and tibia_l_imu
+		calcn_r_imu and calcn_l_imu
+
+	  Important: attach the files in the same order you give the names of the imus in line 5. All the names in line 5 should be separated with tabs
+
+	  f.i.:
+	  	pelvis_imu	tibia_r_imu calcn_r_imu
+		attach(com5)
+		attach(com9)
+	- Run OpenSimParser.py
+	- For using OpenSim:
+		https://youtu.be/qlyU-pgA1ec?si=nb4rk4MsG0f6FyWd
