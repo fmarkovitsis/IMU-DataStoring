@@ -22,14 +22,14 @@ imuFilesD = []
 
 ########################## DATA PATHS ##########################
 # for one imu per mcu
-imufile0 = open (" ... ", "r")
+imufile0 = open (r"C:\Users\sol77\Desktop\Motion-Capture\OpenSimParser\dataExp\COM5_data.txt", "r")
 imuFilesS.append(imufile0.readlines())
-imufile1 = open (" ... ", "r")
+imufile1 = open (r"C:\Users\sol77\Desktop\Motion-Capture\OpenSimParser\dataExp\COM18_data.txt", "r")
 imuFilesS.append(imufile1.readlines())
 
 
 # for two imus per mcu
-imufile2 = open (" ... ", "r")
+imufile2 = open (r"C:\Users\sol77\Desktop\Motion-Capture\OpenSimParser\dataExp\COM9_data.txt", "r")
 imuFilesD.append(imufile2.readlines())
 ########################## DATA PATHS ##########################
 
@@ -68,6 +68,8 @@ for file in imuFilesS:
 
         if time[0] == "24":
             time[0] = "00"
+
+
 
     timeOffsetsS.append(counter)
 
@@ -139,15 +141,15 @@ for i in range (0, len(imuFilesD)):
             break
 
 
-    del imuFilesS[i][2:(j-1)]
+    del imuFilesD[i][2:(j-1)]
 
-    for j in range (2, len(imuFilesS[i])):
-        numbers = re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?', imuFilesS[i][j])
+    for j in range (2, len(imuFilesD[i])):
+        numbers = re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?', imuFilesD[i][j])
         if len(numbers) < 5:
             continue
 
         num = int(numbers[0]) - realOffset
-        imuFilesS[i][j] = f"{str(num)} {numbers[1]} {numbers[2]} {numbers[3]} {numbers[4]}\n"
+        imuFilesD[i][j] = f"{str(num)} {numbers[1]} {numbers[2]} {numbers[3]} {numbers[4]}\n"
 
 
 
@@ -163,7 +165,7 @@ for i in range (0, len(imuFilesS)):
 
 doubleIdx = []
 imuFilesDnu = []
-for i in range (0, len(imuFilesS)):
+for i in range (0, len(imuFilesD)):
     doubleIdx.append(2)
     imuFilesDnu.append([])
 
@@ -171,7 +173,7 @@ while 1:
     counter = 0
 
     for i in range (0, len(imuFilesS)):
-        if singleIdx[i] > len(imuFilesS[i]):
+        if singleIdx[i] >= len(imuFilesS[i]):
             terminate = 1
             break
 
@@ -182,7 +184,7 @@ while 1:
             singleIdx[i] = singleIdx[i] + 2
     
     for i in range (0, len(imuFilesD)):
-        if doubleIdx[i] > len(imuFilesD[i]):
+        if doubleIdx[i] >= len(imuFilesD[i]):
             terminate = 1
             break
 
@@ -210,10 +212,10 @@ while 1:
     ts = ts + 20
 
 for i in range (0, len(imuFilesSnu)):
-    with open(f"file_{i}.txt", "w") as f:
+    with open(f"outputs\\file_{i}.txt", "w") as f:
         f.writelines(imuFilesSnu[i])
 
 
 for i in range (10, len(imuFilesDnu)+10):
-    with open(f"file_{i}.txt", "w") as f:
+    with open(f"outputs\\file_{i}.txt", "w") as f:
         f.writelines(imuFilesDnu[i-10])

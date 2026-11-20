@@ -15,7 +15,7 @@ void setup() {
   textSize(18);
   smooth(8);
 
-  myPort = new Serial(this, "COM9", 460800);
+  myPort = new Serial(this, "COM5", 460800);
   myPort.clear();
 
 }

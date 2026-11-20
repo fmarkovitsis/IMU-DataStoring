@@ -97,7 +97,7 @@ def readData (name):
         tstr = datetime.now().strftime("%H%M%S%f")[:-3]
         mil = tstr[-3:]
 
-        if int(mil) % 5 == 0:
+        if int(mil) % 20 == 0:
             ser.write(("start\n").encode("utf-8"))
             break
     

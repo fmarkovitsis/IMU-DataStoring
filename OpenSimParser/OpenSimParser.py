@@ -1,6 +1,6 @@
 import re
 
-osfile = open(f"opensimData.sto", "w")
+osfile = open(f"outputs\\opensimData.sto", "w")
 
 osfile.write("Datarate=50.000000\nDataType=Quaternion\nversion=3\nOpenSimVersion=4.1\nendheader\ntime	pelvis_imu	femur_r_imu	tibia_r_imu	calcn_r_imu\n")
 
@@ -14,14 +14,14 @@ imuFilesD = []
 
 ########################## DATA PATHS ##########################
 # for one imu per mcu
-imufile0 = open (" ... ", "r")
+imufile0 = open ("outputs\\file_0.txt", "r")
 imuFilesS.append(imufile0.readlines())
-imufile1 = open (" ... ", "r")
+imufile1 = open ("outputs\\file_1.txt", "r")
 imuFilesS.append(imufile1.readlines())
 
 
 # for two imus per mcu
-imufile2 = open (" ... ", "r")
+imufile2 = open ("outputs\\file_10.txt", "r")
 imuFilesD.append(imufile2.readlines())
 ########################## DATA PATHS ##########################
 
